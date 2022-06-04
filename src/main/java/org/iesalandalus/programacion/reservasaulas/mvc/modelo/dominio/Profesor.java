@@ -96,11 +96,13 @@ public class Profesor implements Serializable {
 
     //Establece el teléfono del profesor
     public void setTelefono(String telefono) {
-        if(telefono != null && !telefono.matches(ER_TELEFONO) || telefono.trim().equals("")) {
+    	if(telefono == null) {
+    		this.telefono = null;
+    	} else if(!telefono.matches(ER_TELEFONO) || telefono.trim().equals("")) {
             throw new IllegalArgumentException("ERROR: El teléfono del profesor no es válido.");
         } else {
             this.telefono = telefono;
-        }
+    	} 
     }
 
     public static Profesor getProfesorFicticio(String correo) {
