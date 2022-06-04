@@ -185,6 +185,7 @@ public class ControladorGestionProfesores implements Initializable {
 
         Optional<ButtonType> respuesta = dialogoCierre.showAndWait();
         if(respuesta.isPresent() && respuesta.get() == ButtonType.OK) {
+        	controladorMVC.terminar();
             System.exit(0);
         }
     }

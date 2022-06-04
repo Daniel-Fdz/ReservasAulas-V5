@@ -31,7 +31,16 @@ public class ControladorAnadirProfesor {
     @FXML
     public void insertarProfesor() {
         try {
-            Profesor profesor = new Profesor(tfNombre.getText(), tfCorreo.getText(), tfTelefono.getText());
+        	Profesor profesor = null;
+        	String telefono = tfTelefono.getText();
+        	if (telefono == null) {
+        		telefono = "";
+        	}
+        	if (telefono.equals("")) {
+        		profesor = new Profesor(tfNombre.getText(), tfCorreo.getText());
+        	} else {
+        		profesor = new Profesor(tfNombre.getText(), tfCorreo.getText(), tfTelefono.getText());
+        	}
             controlador.insertarProfesor(profesor);
             profesores.setAll(controlador.getProfesores());
             Dialogos.mostrarDialogoInformacion("Información sobre profesores", "Profesor insertado correctamente");
